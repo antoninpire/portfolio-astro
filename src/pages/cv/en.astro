@@ -1,0 +1,387 @@
+---
+import me from "@assets/me.png";
+import Calendar from "@components/icons/cv/Calendar.astro";
+import Code from "@components/icons/cv/Code.astro";
+import Github from "@components/icons/cv/Github.astro";
+import Mail from "@components/icons/cv/Mail.astro";
+import Phone from "@components/icons/cv/Phone.astro";
+import Pin from "@components/icons/cv/Pin.astro";
+import ME from "@data/me.json";
+import CV from "@layouts/CV.astro";
+import { Image } from "astro:assets";
+---
+
+<CV title="Antonin PIRE - CV (en)">
+  <div class="w-screen h-screen flex flex-col">
+    <div class="h-[20%] w-full bg-white px-[6%] flex items-center">
+      <div class="w-[50%] flex flex-col">
+        <h1 class="text-4xl font-sono-semibold text-gray-800">Antonin Pire</h1>
+        <h2 class="font-sono-bold text-xl text-gray-500">Software Engineer</h2>
+        <div class="mt-4 flex flex-col gap-y-2">
+          <div class="">
+            <div class="flex flex-row items-center gap-3">
+              <div
+                class="flex flex-row items-center text-gray-500 text-xs gap-x-1"
+              >
+                <Calendar />
+                <p>1999-21-12</p>
+              </div>
+              <div
+                class="flex flex-row items-center text-gray-500 text-xs gap-x-1"
+              >
+                <Pin />
+                <p>Paris, France</p>
+              </div>
+            </div>
+          </div>
+          <div class="">
+            <div class="flex flex-row items-center gap-3">
+              <div
+                class="flex flex-row items-center text-gray-500 text-xs gap-x-1"
+              >
+                <Phone />
+                <p>{ME.phone}</p>
+              </div>
+              <div
+                class="flex flex-row items-center text-gray-500 text-xs gap-x-1"
+              >
+                <Mail />
+                <p>{ME.email}</p>
+              </div>
+            </div>
+          </div>
+          <div class="">
+            <div class="flex flex-row items-center gap-3">
+              <div
+                class="flex flex-row items-center text-gray-500 text-xs gap-x-1"
+              >
+                <Code />
+                <a
+                  href={ME.portfolio_url}
+                  class="font-sono-semibold text-blue-500"
+                >
+                  {ME.portfolio_url}
+                </a>
+              </div>
+              <div
+                class="flex flex-row items-center text-gray-500 text-xs gap-x-1"
+              >
+                <Github />
+                <a
+                  href={ME.github_url}
+                  class="font-sono-semibold text-blue-500"
+                >
+                  {ME.github_url}
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="w-[50%] flex items-center justify-end">
+        <div
+          class="overflow-hidden rounded-full relative border-2 border-ternary"
+        >
+          <Image src={me.src} alt="Me" quality={100} width={128} height={128} />
+        </div>
+      </div>
+    </div>
+    <div
+      class="h-[80%] w-full bg-background text-white border-t-2 border-ternary flex px-[6%] py-[5%]"
+    >
+      <div class="w-[50%] h-full flex flex-col">
+        {/* EDUCATION */}
+        <div class="flex flex-col">
+          <h2 class="text-ternary font-sono-semibold text-xl">Education</h2>
+
+          <div class="flex flex-col mt-4">
+            <h3 class="text-base font-sono-semibold">ESIEE PARIS</h3>
+            <h3 class="text-[15px] leading-[1.375rem] font-sono-semibold">
+              Master in Computer Science Engineering
+            </h3>
+            <div class="flex items-center gap-x-2">
+              <div class="flex items-center text-sm gap-x-1">
+                <Calendar />
+                <p>2019 - 2022</p>
+              </div>
+              <div class="flex items-center text-sm gap-x-1">
+                <Pin />
+                <p>Champs-Sur-Marnes, France</p>
+              </div>
+            </div>
+            <div class="mt-1">
+              <ul class="list-disc text-sm px-8">
+                <li>3 years apprenticeship at TCHEKER</li>
+                <li>TOEIC 975 / 990</li>
+                <li>Courses in AI, Machine Learning and 3D</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="flex flex-col mt-4">
+            <h3 class="text-base font-sono-semibold">
+              IUT Marne-la-Vall&eacute;e
+            </h3>
+            <h3 class="text-[15px] leading-[1.375rem] font-sono-semibold">
+              BTEC in Computer Science
+            </h3>
+            <div class="flex items-center gap-x-2">
+              <div class="flex items-center text-sm gap-x-1">
+                <Calendar />
+                <p>2017 - 2019</p>
+              </div>
+              <div class="flex items-center text-sm gap-x-1">
+                <Pin />
+                <p>Champs-Sur-Marnes, France</p>
+              </div>
+            </div>
+            <div class="mt-1">
+              <ul class="list-disc text-sm px-8">
+                <li>4 month internship at TCHEKER</li>
+                <li>
+                  Learned language basics in C, Python, Javascript, Android
+                </li>
+                <li>Courses in methodologies, management and communication</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        {/* END EDUCATION */}
+
+        {/* SKILLS */}
+        <div class="flex flex-col mt-6">
+          <h2 class="text-ternary font-sono-semibold text-xl">Skills</h2>
+          <div class="flex items-center gap-x-2 mt-2">
+            <p
+              class="uppercase text-sm font-sono-bold bg-[rgba(80,114,100,0.3)] py-[1px] px-[6px] rounded text-[#9AE6B4] whitespace-nowrap"
+            >
+              WEB FRONT
+            </p>
+            <div>
+              <p>NextJS / ReactJS / AngularJS</p>
+              <p>Typescript</p>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-x-2 mt-2">
+            <p
+              class="uppercase text-sm font-sono-bold bg-[rgba(80,114,100,0.3)] py-[1px] px-[6px] rounded text-[#9AE6B4] whitespace-nowrap"
+            >
+              WEB BACK
+            </p>
+            <div>
+              <p>NodeJS / NestJS / ExpressJS</p>
+              <p>PHP / Socket.IO / Typescript</p>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-x-2 mt-2">
+            <p
+              class="uppercase text-sm font-sono-bold bg-[rgba(80,114,100,0.3)] py-[1px] px-[6px] rounded text-[#9AE6B4]"
+            >
+              MOBILE
+            </p>
+            <p class="">React Native, Android native</p>
+          </div>
+
+          <div class="flex items-center gap-x-2 mt-3">
+            <p
+              class="uppercase text-sm font-sono-bold bg-[rgba(80,114,100,0.3)] py-[1px] px-[6px] rounded text-[#9AE6B4]"
+            >
+              SOFTWARE
+            </p>
+            <p class="">C / C++ / C# / Java / Python</p>
+          </div>
+
+          <div class="flex items-center gap-x-2 mt-2">
+            <p
+              class="uppercase text-sm font-sono-bold bg-[rgba(80,114,100,0.3)] py-[1px] px-[6px] rounded text-[#9AE6B4]"
+            >
+              DATABASE
+            </p>
+            <div>
+              <p class="">PostgresSQL / MySQL / MongoDB</p>
+              <p>SQL Server</p>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-x-2 mt-2">
+            <p
+              class="uppercase text-sm font-sono-bold bg-[rgba(80,114,100,0.3)] py-[1px] px-[6px] rounded text-[#9AE6B4]"
+            >
+              METHODOLOGIES
+            </p>
+            <p class="">SCRUM / Agile / V Cycle</p>
+          </div>
+        </div>
+
+        {/* END SKILLS */}
+
+        {/* LANGUAGES */}
+
+        <div class="flex flex-col mt-6">
+          <h2 class="text-ternary font-sono-semibold text-xl">Languages</h2>
+          <div class="w-full flex flex-col px-5">
+            <div>
+              <div class="flex items-center gap-3 mt-4">
+                <p class="font-sono-semibold text-sm">French</p>
+                <p class="font-sono-light text-sm">Native speaker</p>
+              </div>
+
+              <div class="flex items-center gap-3">
+                <p class="font-sono-semibold text-sm">Enlgish</p>
+                <p class="font-sono-light text-sm">C1</p>
+              </div>
+
+              <div class="flex items-center gap-3">
+                <p class="font-sono-semibold text-sm">German</p>
+                <p class="font-sono-light text-sm">B1</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* END LANGUAGES */}
+      </div>
+
+      <div class="w-[50%] h-full flex flex-col">
+        {/* EXPERIENCE */}
+        <div class="flex flex-col">
+          <h2 class="text-ternary font-sono-semibold text-xl">Experience</h2>
+
+          <div class="flex flex-col mt-2">
+            <h3 class="text-base font-sono-semibold">TCHEKER</h3>
+            <h3 class="text-[15px] leading-[1.375rem] font-sono-semibold ml-1">
+              CTO
+            </h3>
+            <div class="gap-x-2 flex items-center">
+              <div class="flex items-center text-sm gap-x-1">
+                <Calendar />
+                <p>Sep. 2022 - Now</p>
+              </div>
+              <div class="flex items-center text-sm gap-x-1">
+                <Pin />
+                <p>Courbevoie, France</p>
+              </div>
+            </div>
+            <div class="mt-1">
+              <ul class="list-disc text-sm px-8">
+                <li>Managing a team of 4 developers / 1 designer</li>
+                <li>Handling clients and collaborations</li>
+                <li>Managing a machine learning project</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="flex flex-col mt-4">
+            <h3 class="text-base font-sono-semibold">TCHEKER</h3>
+            <h3 class="text-[15px] leading-[1.375rem] font-sono-semibold ml-1">
+              Apprentice Fullstack Web Developer
+            </h3>
+            <div class="flex items-center gap-x-2 mt-1">
+              <div class="flex items-center text-sm gap-x-1">
+                <Calendar />
+                <p>2019 - 2022</p>
+              </div>
+              <div class="flex items-center text-sm gap-x-1">
+                <Pin />
+                <p>Courbevoie, France</p>
+              </div>
+            </div>
+            <div class="mt-1">
+              <ul class="list-disc text-sm px-8">
+                <li>Managing a team of 2 developers</li>
+                <li>
+                  Lead developer for the making of a mobile app for the
+                  &quot;tchekers&quot;
+                </li>
+                <li>
+                  Lead developer for the making of a dashboard for internal
+                  members and clients
+                </li>
+                <li>
+                  Lead developer for the making of a REST API to handle the
+                  back-end for the mobile app and dashboard
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        {/* END EXPERIENCE */}
+
+        {/* PROJECTS */}
+        <div class="flex flex-col mt-5">
+          <h2 class="text-ternary font-sono-semibold text-xl">Projects</h2>
+          <div class="flex flex-col mt-2">
+            <h3 class="text-base font-sono-semibold">Sinta</h3>
+            <h3 class="text-sm font-medium indent-3 mt-1">
+              A mobile app for couples, where they can interact with each other,
+              store medias, manage a shared calendar, place activities on a
+              common map, send notifications to each other, etc.
+            </h3>
+            <div class="flex items-center gap-x-1 mt-1 flex-wrap gap-y-1">
+              <p
+                class="uppercase text-sm font-sono-bold bg-[rgba(80,114,100,0.3)] py-[1px] px-[6px] rounded text-[#9AE6B4] whitespace-nowrap"
+              >
+                REACT NATIVE
+              </p>
+              <p
+                class="uppercase text-sm font-sono-bold bg-[rgba(80,114,100,0.3)] py-[1px] px-[6px] rounded text-[#9AE6B4]"
+              >
+                NODEJS
+              </p>
+              <p
+                class="uppercase text-sm font-sono-bold bg-[rgba(80,114,100,0.3)] py-[1px] px-[6px] rounded text-[#9AE6B4]"
+              >
+                SOCKET.IO
+              </p>
+            </div>
+            <div class="flex items-center gap-x-1 mt-1 flex-wrap gap-y-1">
+              <p
+                class="uppercase text-sm font-sono-bold bg-[rgba(80,114,100,0.3)] py-[1px] px-[6px] rounded text-[#9AE6B4]"
+              >
+                POSTGRES
+              </p>
+              <p
+                class="uppercase text-sm font-sono-bold bg-[rgba(80,114,100,0.3)] py-[1px] px-[6px] rounded text-[#9AE6B4]"
+              >
+                NEXTJS
+              </p>
+            </div>
+          </div>
+          <div class="flex flex-col mt-5">
+            <h3 class="text-base font-sono-semibold">Natflix</h3>
+            <h3 class="text-sm font-medium indent-3 mt-1">
+              A netflix clone implementing 3 different machine learning
+              algorithms to suggest content based on users rating.
+            </h3>
+            <div class="flex items-center gap-x-1 mt-1 flex-wrap gap-y-1">
+              <p
+                class="uppercase text-sm font-sono-bold bg-[rgba(80,114,100,0.3)] py-[1px] px-[6px] rounded text-[#9AE6B4] whitespace-nowrap"
+              >
+                ReactJS
+              </p>
+              <p
+                class="uppercase text-sm font-sono-bold bg-[rgba(80,114,100,0.3)] py-[1px] px-[6px] rounded text-[#9AE6B4]"
+              >
+                NODEJS
+              </p>
+              <p
+                class="uppercase text-sm font-sono-bold bg-[rgba(80,114,100,0.3)] py-[1px] px-[6px] rounded text-[#9AE6B4]"
+              >
+                MYSQL
+              </p>
+              <p
+                class="uppercase text-sm font-sono-bold bg-[rgba(80,114,100,0.3)] py-[1px] px-[6px] rounded text-[#9AE6B4]"
+              >
+                MACHINE LEARNING
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* END PROJECTS */}
+      </div>
+    </div>
+  </div>
+</CV>

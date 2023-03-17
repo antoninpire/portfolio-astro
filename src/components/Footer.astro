@@ -1,0 +1,28 @@
+---
+import Hr from "@components/Hr.astro";
+import Github from "@components/icons/Github.astro";
+import ME from "@data/me.json";
+---
+
+<footer class="flex flex-col gap-4 max-w-3xl mx-auto py-5">
+  <Hr />
+  <div
+    class="flex items-center justify-between px-5 md:flex-row flex-col md:gap-y-0 gap-y-3"
+  >
+    <p class="text-text-light dark:text-white text-sm">
+      © {new Date().getFullYear()} Antonin PIRE. All rights reserved.
+    </p>
+    <a
+      title="Source code of the portfolio"
+      href={ME.portfolio_github_url}
+      target="_blank"
+      rel="noreferrer"
+      class="flex items-center gap-1 text-text-light dark:text-white dark:hover:text-primary hover:text-primary-light"
+    >
+      <Github />
+      Source Code <span class="text-sm text-gray-600 dark:text-gray-500"
+        >(built with Astro)</span
+      >
+    </a>
+  </div>
+</footer>

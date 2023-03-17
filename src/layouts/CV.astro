@@ -1,0 +1,93 @@
+---
+import { WEBSITE } from "@config";
+
+const googleSiteVerification = import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION;
+
+export interface Props {
+  title?: string;
+  author?: string;
+  description?: string;
+}
+
+const {
+  title = WEBSITE.title,
+  author = WEBSITE.author,
+  description = WEBSITE.desc,
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <meta name="generator" content={Astro.generator} />
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+
+    <!-- General Meta Tags -->
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+    <meta name="author" content={author} />
+
+    {
+      // If PUBLIC_GOOGLE_SITE_VERIFICATION is set in the environment variable,
+      // include google-site-verification tag in the heading
+      // Learn more: https://support.google.com/webmasters/answer/9008080#meta_tag_verification&zippy=%2Chtml-tag
+      googleSiteVerification && (
+        <meta
+          name="google-site-verification"
+          content={googleSiteVerification}
+        />
+      )
+    }
+  </head>
+  <body class="font-sono">
+    <slot />
+  </body>
+</html>
+
+<style scoped>
+  @font-face {
+    font-family: "Sono";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url("/fonts/Sono-Regular.ttf") format("truetype");
+  }
+
+  @font-face {
+    font-family: "Sono-Bold";
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url("/fonts/Sono-Bold.ttf") format("truetype");
+  }
+
+  @font-face {
+    font-family: "Sono-light";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url("/fonts/Sono-Light.ttf") format("truetype");
+  }
+
+  @font-face {
+    font-family: "Sono-SemiBold";
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: url("/fonts/Sono-SemiBold.ttf") format("truetype");
+  }
+
+  @font-face {
+    font-family: "Sono-Medium";
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: url("/fonts/Sono-Medium.ttf") format("truetype");
+  }
+</style>

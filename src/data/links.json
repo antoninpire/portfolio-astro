@@ -1,0 +1,14 @@
+[
+  {
+    "label": "Bio",
+    "target": "#bio"
+  },
+  {
+    "label": "Projects",
+    "target": "#projects"
+  },
+  {
+    "label": "Skills",
+    "target": "#skills"
+  }
+]

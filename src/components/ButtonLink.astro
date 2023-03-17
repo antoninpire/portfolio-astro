@@ -14,7 +14,7 @@ const { href, className, ariaLabel, title, disabled = false } = Astro.props;
   type="button"
   href={disabled ? "#" : href}
   tabindex={disabled ? "-1" : "0"}
-  class={`group hover:bg-primary ${className}`}
+  class={`group hover:bg-primary-light dark:hover:bg-primary ${className}`}
   aria-label={ariaLabel}
   title={title}
   aria-disabled={disabled}

@@ -1,0 +1,34 @@
+---
+import PROJECTS from "@data/projects";
+import { Image } from "astro:assets";
+---
+
+<div id="projects">
+  <h2 class="font-bold text-xl">Some Projects</h2>
+  <div
+    class="flex flex-col md:items-start items-center md:flex-row md:flex-wrap md:gap-y-8 justify-between md:gap-x-3 gap-8 md:py-6 md:mt-0 mt-8"
+  >
+    {
+      PROJECTS.map((project) => (
+        <a
+          href={`/projects/${project.slug}`}
+          class="md:w-[48%] w-[75%] flex flex-col hover:cursor-pointer md:hover:text-secondary-light dark:md:hover:text-secondary"
+        >
+          <div class="w-full rounded-xl relative overflow-hidden">
+            <Image
+              class="object-fill"
+              src={project.src}
+              width={255}
+              height={160}
+              alt="Sinta"
+            />
+          </div>
+          <div class="w-full flex items-center flex-col py-3">
+            <h3 class="font-bold text-xl py-2">{project.label}</h3>
+            <p class="text-center text-sm">{project.description}</p>
+          </div>
+        </a>
+      ))
+    }
+  </div>
+</div>

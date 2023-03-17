@@ -1,0 +1,203 @@
+---
+import Download from "@components/icons/Download.astro";
+import Github from "@components/icons/Github.astro";
+import Linkedin from "@components/icons/Linkedin.astro";
+import Moon from "@components/icons/Moon.astro";
+import Sun from "@components/icons/Sun.astro";
+import LINKS from "@data/links.json";
+import ME from "@data/me.json";
+---
+
+<header class="flex flex-col fixed bg-transparent/20 w-full z-30 backdrop-blur">
+  <div
+    class="w-full flex md:justify-between justify-between md:px-0 px-5 items-center gap-4 py-5 max-w-3xl mx-auto"
+  >
+    <div class="hidden md:flex items-center gap-4">
+      <p
+        data-target="#about"
+        class="font-bold text-primary-light dark:text-primary text-2xl hover:cursor-pointer"
+      >
+        Antonin
+      </p>
+
+      {
+        LINKS.map((link) => (
+          <p
+            data-target={link.target}
+            class="hover:cursor-pointer border-b border-transparent text-white hover:border-white"
+          >
+            {link.label}
+          </p>
+        ))
+      }
+    </div>
+    <div class="items-center gap-4 hidden md:flex text-white">
+      <a target="_blank" rel="noreferrer" href={ME.github_url}>
+        <Github />
+      </a>
+      <a target="_blank" rel="noreferrer" href={ME.linkedin_url}>
+        <Linkedin />
+      </a>
+      <div id="toggle-mode-1">
+        <Sun className="dark:block hidden" />
+        <Moon className="block dark:hidden" />
+      </div>
+      <a
+        class="rounded-xl border-2 font-bold px-4 py-2 flex items-center gap-2 bg-secondary-light hover:bg-secondary-light/90 dark:hover:bg-secondary/90 dark:bg-secondary border-transparent"
+        href="/assets/cv.pdf"
+        download="Antonin PIRE CV.pdf"
+      >
+        <Download />
+        Resume
+      </a>
+    </div>
+
+    <p
+      data-target="#about"
+      class="font-bold text-primary-light dark:text-primary text-xl hover:cursor-pointer sm:hidden"
+    >
+      Antonin
+    </p>
+
+    <button
+      id="hamburger"
+      class="self-end p-2 sm:hidden focus-outline"
+      aria-label="Open Menu"
+      aria-expanded="false"
+      aria-controls="menu-items"
+    >
+      <div
+        id="hamburger-lines"
+        class="h-5 w-6 flex-col items-end justify-between flex"
+      >
+        <div id="first-line" class="h-0.5 transition-all w-full bg-white"></div>
+        <div id="second-line" class="h-0.5 transition-all bg-white w-3/4"></div>
+        <div id="third-line" class="h-0.5 transition-all bg-white w-1/2"></div>
+      </div>
+    </button>
+  </div>
+
+  <div class="hidden transition-all" id="menu-items">
+    <div class="flex flex-col items-center gap-5 text-white pb-5">
+      {LINKS.map((link) => <p data-target={link.target}>{link.label}</p>)}
+      <div class="flex items-center gap-4">
+        <a target="_blank" rel="noreferrer" href={ME.github_url}>
+          <Github />
+        </a>
+        <a target="_blank" rel="noreferrer" href={ME.linkedin_url}>
+          <Linkedin />
+        </a>
+        <div id="toggle-mode-2">
+          <Sun className="dark:block hidden" />
+          <Moon className="block dark:hidden" />
+        </div>
+      </div>
+      <a
+        class="rounded-xl border-2 font-bold px-4 py-2 flex items-center gap-2 hover:bg-secondary-light/90 bg-secondary-light dark:hover:bg-secondary/90 dark:bg-secondary border-transparent"
+        href="/assets/cv.pdf"
+        download="Antonin PIRE CV.pdf"
+      >
+        <Download />
+        Resume
+      </a>
+    </div>
+  </div>
+</header>
+
+<script>
+  // Accessors
+  const links = document.querySelectorAll("[data-target]");
+  const menuBtn = document.querySelector("#hamburger");
+  const menuItems = document.querySelector("#menu-items")?.classList;
+  const iconContainer = document.querySelector("#hamburger-lines")?.classList;
+  const firstLine = document.querySelector("#first-line")?.classList;
+  const secondLine = document.querySelector("#second-line ")?.classList;
+  const thirdLine = document.querySelector("#third-line")?.classList;
+  const toggler1 = document.getElementById("toggle-mode-1");
+  const toggler2 = document.getElementById("toggle-mode-2");
+
+  function toggleMenu() {
+    const menuExpanded = menuBtn?.getAttribute("aria-expanded");
+    if (menuExpanded === "false") {
+      menuBtn?.setAttribute("aria-expanded", "true");
+      menuBtn?.setAttribute("aria-label", "Close Menu");
+      menuItems?.remove("hidden");
+      // icon animation
+      iconContainer?.remove("flex");
+      iconContainer?.add("relative");
+      firstLine?.add("rotate-45", "absolute", "bottom-1/2");
+      thirdLine?.add("hidden");
+      secondLine?.add("!w-full", "-rotate-45", "absolute", "bottom-1/2");
+    } else {
+      menuBtn?.setAttribute("aria-expanded", "false");
+      menuBtn?.setAttribute("aria-label", "Open Menu");
+      menuItems?.add("hidden");
+      // icon animation
+      iconContainer?.add("flex");
+      iconContainer?.remove("relative");
+      firstLine?.remove("rotate-45", "absolute", "bottom-1/2");
+      thirdLine?.remove("hidden");
+      secondLine?.remove("!w-full", "-rotate-45", "absolute", "bottom-1/2");
+    }
+  }
+
+  // Links
+  links.forEach((link) => {
+    link.addEventListener("click", () => {
+      if (!(link instanceof HTMLElement)) return;
+      const target = link.dataset.target;
+
+      // Smooth Scroll / Redirect
+      if (target !== undefined) {
+        if (window.location.pathname.includes("/projects")) {
+          window.location.href =
+            window.location.protocol +
+            "//" +
+            window.location.host +
+            "/" +
+            target;
+        } else {
+          const rect = document.querySelector(target)?.getBoundingClientRect();
+          if (rect !== undefined) {
+            window.scrollTo({
+              top: window.scrollY + rect.top - 100,
+              behavior: "smooth",
+            });
+
+            // Close menu if it was open
+            const menuExpanded = menuBtn?.getAttribute("aria-expanded");
+            if (menuExpanded !== "false") toggleMenu();
+          }
+        }
+      }
+    });
+  });
+
+  // Toggle Menu
+  menuBtn?.addEventListener("click", toggleMenu);
+
+  // Dark Mode
+  function toggleDarkMode() {
+    const theme = (() => {
+      if (
+        typeof localStorage !== "undefined" &&
+        localStorage.getItem("theme")
+      ) {
+        return localStorage.getItem("theme");
+      }
+      if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+        return "dark";
+      }
+      return "light";
+    })();
+    if (theme === "light") {
+      document.documentElement.classList.add("dark");
+      window.localStorage.setItem("theme", "dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+      window.localStorage.setItem("theme", "light");
+    }
+  }
+  toggler1?.addEventListener("click", toggleDarkMode);
+  toggler2?.addEventListener("click", toggleDarkMode);
+</script>

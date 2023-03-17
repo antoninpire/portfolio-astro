@@ -1,9 +1,27 @@
 ---
+import Divider from "@components/Divider.astro";
+import About from "@components/sections/About.astro";
+import Bio from "@components/sections/Bio.astro";
+import Description from "@components/sections/Description.astro";
+import Projects from "@components/sections/Projects.astro";
+import Skills from "@components/sections/Skills.astro";
 import Layout from "@layouts/Layout.astro";
 ---
 
-<Layout title="Welcome to Astro.">
-  <main class="flex items-center justify-center h-screen">
-    <h1 class="text-white text-5xl font-bold">Hello, this is my Portfolio.</h1>
+<Layout title="Antonin PIRE">
+  <main class="max-w-3xl mx-auto text-text-light dark:text-white md:px-0 px-3">
+    <div class="mx-auto max-w-xl md:flex md:flex-col md:gap-10">
+      <About />
+      <Divider />
+      <Description />
+      <Divider />
+      <Bio />
+      <Divider />
+      <Projects />
+      <Divider />
+      <Skills />
+    </div>
   </main>
+
+  <div class="md:h-36 h-12"></div>
 </Layout>

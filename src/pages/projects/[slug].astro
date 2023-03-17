@@ -1,0 +1,99 @@
+---
+import ExternalLink from "@components/icons/ExternalLink.astro";
+import About from "@components/sections/About.astro";
+import PROJECT from "@data/project";
+import PROJECTS from "@data/projects";
+import Layout from "@layouts/Layout.astro";
+import { Image } from "astro:assets";
+
+export function getStaticPaths() {
+  return [PROJECTS.map((project) => ({ params: { slug: project.slug } }))];
+}
+
+const { slug } = Astro.params;
+
+if (slug === undefined) {
+  Astro.redirect("/");
+  return;
+}
+const project = PROJECT[slug as keyof typeof PROJECT];
+---
+
+<Layout title={`Antonin PIRE - ${slug}`}>
+  <main class="max-w-3xl mx-auto text-text-light dark:text-white md:px-0 px-5">
+    <div class="mx-auto max-w-xl md:flex md:flex-col md:gap-10">
+      <About />
+
+      <div class="flex items-center gap-2 mt-8 md:mt-0">
+        <a href="/">
+          <p
+            class="text-primary-light dark:text-primary font-bold border-b dark:border-b-background border-b-background-light hover:border-b-primary-light dark:hover:border-b-primary hover:cursor-pointer text-lg"
+          >
+            Antonin
+          </p>
+        </a>
+        <p>{">"}</p>
+        <h3 class="text-2xl">{project.name}</h3>
+      </div>
+      <div class="text-center mt-3">
+        {project.description}
+      </div>
+
+      <div class="mt-5 flex flex-col gap-1 justify-center md:pl-[10%]">
+        {
+          project.bullets.map((bullet, index) => (
+            <div class="flex items-center gap-2">
+              <p class="uppercase text-sm font-bold bg-primary-light/30 text-primary-light dark:bg-[rgba(80,114,100,0.3)] py-[1px] px-[6px] rounded dark:text-[#9AE6B4]">
+                {bullet.label}
+              </p>
+              {bullet.content.type === "text" ? (
+                <p>{bullet.content.text}</p>
+              ) : (
+                <a
+                  href={bullet.content.target}
+                  rel="noreferrer"
+                  target="_blank"
+                  class="flex items-center gap-1 hover:cursor-pointer text-secondary-light dark:text-secondary border-b border-b-transparent hover:border-b-secondary-light dark:hover:border-b-secondary"
+                >
+                  <p>{bullet.content.text}</p>
+                  <ExternalLink />
+                </a>
+              )}
+            </div>
+          ))
+        }
+      </div>
+
+      <div class="mt-8">
+        <p class="font-bold text-xl">Features</p>
+        <ul class="px-8 list-disc mt-4">
+          {
+            project.features.map((feature, index) => (
+              <li class={`${index !== 0 ? "mt-2" : ""}`}>{feature}</li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-8 flex flex-col gap-3 md:px-8">
+      {
+        project.images.map((imageRow, index) => (
+          <div class="flex items-center justify-center gap-2">
+            {imageRow.map((image, i) => (
+              <div
+                class={`relative w-full ${
+                  imageRow.length === 1
+                    ? "md:h-80 h-52"
+                    : "lg:h-[512px] md:h-[430px] h-[348px]"
+                } rounded-lg overflow-hidden`}
+              >
+                <Image src={image.src} alt={image.alt} quality={90} />
+              </div>
+            ))}
+          </div>
+        ))
+      }
+    </div>
+  </main>
+</Layout>

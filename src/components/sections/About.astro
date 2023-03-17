@@ -1,0 +1,107 @@
+---
+import me from "@assets/me.png";
+import Mail from "@components/icons/Mail.astro";
+import Phone from "@components/icons/Phone.astro";
+import ME from "@data/me.json";
+import { Image } from "astro:assets";
+---
+
+<div id="about" class="flex">
+  <div class="w-[60%]">
+    <h1 class="font-bold text-4xl">Antonin Pire</h1>
+    <h2 id="typing-animated" class="text-lg md:text-xl min-h-[28px]"></h2>
+    <a
+      href={`mailto:${ME.email}`}
+      class="flex items-center gap-1 mt-3 hover:text-secondary-light dark:hover:text-secondary hover:cursor-pointer text-sm leading-3"
+    >
+      <p class="md:text-base text-[15px]">{ME.email}</p>
+      <Mail />
+    </a>
+    <a
+      href={`tel:${ME.phone}`}
+      class="flex items-center gap-1 hover:text-secondary-light dark:hover:text-secondary hover:cursor-pointer text-sm leading-3"
+    >
+      <p class="md:text-base text-[15px]">{ME.phone}</p>
+      <Phone />
+    </a>
+  </div>
+
+  <div class="w-[40%] flex md:items-center md:justify-center justify-end">
+    <div
+      class="relative rounded-full overflow-hidden w-28 h-28 sm:w-auto sm:h-auto"
+    >
+      <Image src={me.src} width={128} height={128} alt="Me" quality={90} />
+    </div>
+  </div>
+</div>
+
+<script>
+  class Typewriter {
+    labels: string[];
+    element: HTMLElement;
+    delay: number;
+    loopNum: number;
+    txt: string;
+    isDeleting: boolean;
+
+    tick() {
+      const i = this.loopNum % this.labels.length;
+      const fullTxt = this.labels[i];
+
+      if (this.isDeleting) {
+        this.txt = fullTxt.substring(0, this.txt.length - 1);
+      } else {
+        this.txt = fullTxt.substring(0, this.txt.length + 1);
+      }
+
+      this.element.textContent = this.txt;
+
+      const that = this;
+      let delta = 125 - Math.random() * 100;
+
+      if (this.isDeleting) {
+        delta /= 2;
+      }
+
+      if (!this.isDeleting && this.txt === fullTxt) {
+        delta = this.delay;
+        this.isDeleting = true;
+      } else if (this.isDeleting && this.txt === "") {
+        this.isDeleting = false;
+        this.loopNum++;
+        delta = 500;
+      }
+
+      setTimeout(function () {
+        that.tick();
+      }, delta);
+    }
+
+    constructor(el: HTMLElement, labels: string[], delay: number) {
+      this.labels = labels;
+      this.element = el;
+      this.delay = delay;
+      this.loopNum = 0;
+      this.txt = "";
+      this.isDeleting = false;
+      this.tick();
+    }
+  }
+
+  window.onload = function () {
+    const element = document.getElementById("typing-animated");
+
+    if (element)
+      new Typewriter(
+        element,
+        [
+          "Software Engineer",
+          "CTO",
+          "Web Developer",
+          "Fullstack Indie",
+          "Software Developer",
+        ],
+        2000
+      );
+  };
+</script>

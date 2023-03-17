@@ -4,16 +4,33 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        background: "#212737",
+        background: "#202023",
         primary: "#2cb67d",
         secondary: "#7f5af0",
         white: "#FBFEFB",
         light: "#94a1b2",
+        "background-light": "#f9f4ef",
+        "primary-light": "#8c7851",
+        "secondary-light": "#f25042",
+        title: "#FBFEFB",
+        text: "#FBFEFB",
+        "title-light": "#020826",
+        "text-light": "#716040",
+        ternary: "#DF7861",
+      },
+      fontFamily: {
+        sono: "Sono",
+        "sono-bold": "Sono-Bold",
+        "sono-light": "Sono-Light",
+        "sono-semibold": "Sono-SemiBold",
+        "sono-medium": "Sono-Medium",
       },
     },
     fontFamily: {
-      mono: ["IBM Plex Mono", "monospace"],
+      mono: ["Sono", "monospace"],
+      sans: ["Sono", "monospace"],
     },
   },
+  darkMode: "class",
   plugins: [],
 };
