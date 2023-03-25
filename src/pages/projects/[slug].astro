@@ -81,13 +81,7 @@ const project = PROJECT[slug as keyof typeof PROJECT];
         project.images.map((imageRow, index) => (
           <div class="flex items-center justify-center gap-2">
             {imageRow.map((image, i) => (
-              <div
-                class={`relative w-full ${
-                  imageRow.length === 1
-                    ? "md:h-80 h-52"
-                    : "lg:h-[512px] md:h-[430px] h-[348px]"
-                } rounded-lg overflow-hidden`}
-              >
+              <div class={`relative w-full rounded-lg overflow-hidden`}>
                 <Image src={image.src} alt={image.alt} quality={90} />
               </div>
             ))}

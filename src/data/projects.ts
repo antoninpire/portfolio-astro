@@ -1,7 +1,9 @@
+import kanban from "@assets/Kanban-home.png";
 import markdown from "@assets/markdown-editor-note.png";
 import natflix from "@assets/natflix.png";
 import polls from "@assets/polls.png";
 import sinta from "@assets/sinta.png";
+import typing from "@assets/typing.png";
 import type { PROJECT_NAMES } from "@data/project";
 
 type TProjects = {
@@ -18,6 +20,20 @@ export default [
       "An app made for couples, where soulmates can interact with each other, share memories, medias...",
     src: sinta,
     slug: "sinta",
+  },
+  {
+    label: "Typing Speed App",
+    description:
+      "A simple typing game to measure your WPM (words per minute), made using React & NextJS",
+    src: typing,
+    slug: "typing-app",
+  },
+  {
+    label: "Kanban App",
+    description:
+      "A kanban app made for personnal use, made using Svelte & SvelteKit",
+    src: kanban,
+    slug: "kanban-app",
   },
   {
     label: "Polls App",

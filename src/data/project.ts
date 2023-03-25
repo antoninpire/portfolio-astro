@@ -1,3 +1,8 @@
+import kanbanAddTask from "@assets/Kanban-add-task.png";
+import kanbanEditTask from "@assets/Kanban-edit-task.png";
+import kanban from "@assets/Kanban-home.png";
+import kanbanMain from "@assets/Kanban-main-screen.png";
+import kanbanManageTags from "@assets/Kanban-manage-tags.png";
 import markdownAddFolder from "@assets/markdown-editor-add-folder.png";
 import markdownLogin from "@assets/markdown-editor-login.png";
 import markdownNoNote from "@assets/markdown-editor-no-note.png";
@@ -13,12 +18,19 @@ import sinta2 from "@assets/sinta2.png";
 import sinta3 from "@assets/sinta3.png";
 import sinta4 from "@assets/sinta4.png";
 import sinta5 from "@assets/sinta5.png";
+import typingLeaderboard from "@assets/typing-leaderboard.png";
+import typingMocha from "@assets/typing-mocha.png";
+import typingProfile from "@assets/typing-profile.png";
+import typingThemes from "@assets/typing-themes.png";
+import typing from "@assets/typing.png";
 
 export type PROJECT_NAMES =
   | "sinta"
   | "natflix"
   | "polls-app"
-  | "markdown-editor";
+  | "markdown-editor"
+  | "kanban-app"
+  | "typing-app";
 
 type TBullet = {
   label: string;
@@ -290,8 +302,8 @@ export default {
         label: "website",
         content: {
           type: "url",
-          text: "https://polls.vercel.app/",
-          target: "https://polls-app-woad.vercel.app//",
+          text: "https://polls.antonin.dev/",
+          target: "https://polls.antonin.dev/",
         },
       },
       {
@@ -322,6 +334,154 @@ export default {
       "See all polls with the possibility to filter through them",
       "Create a poll with 2-4 options and a duration",
       "View comments on any poll and add your own",
+    ],
+  },
+  "kanban-app": {
+    name: "Kanban App",
+    description:
+      "A simple kanban app which is made for personnal use. It allows you to create an account, create your boards / columns / tasks / tags etc and swap their order as you want just like in Trello",
+    images: [
+      [
+        {
+          alt: "Kanban Homescreen",
+          src: kanban,
+        },
+      ],
+      [
+        {
+          alt: "Kanban Main Screen",
+          src: kanbanMain,
+        },
+      ],
+      [
+        {
+          alt: "Kanban Edit Task",
+          src: kanbanEditTask,
+        },
+      ],
+      [
+        {
+          alt: "Kanban Add Task",
+          src: kanbanAddTask,
+        },
+        {
+          alt: "Kanban Manage Tags",
+          src: kanbanManageTags,
+        },
+      ],
+    ],
+    bullets: [
+      {
+        label: "website",
+        content: {
+          type: "url",
+          text: "https://kanban.antonin.dev/",
+          target: "https://kanban.antonin.dev/",
+        },
+      },
+      {
+        label: "source",
+        content: {
+          type: "url",
+          text: "github.com",
+          target: "https://github.com/antoninpire/svelte-kanban-app",
+        },
+      },
+      {
+        label: "stack",
+        content: {
+          type: "text",
+          text: "Svelte / SvelteKit / PostgreSQL",
+        },
+      },
+      {
+        label: "other",
+        content: {
+          type: "text",
+          text: "TRPC / Prisma / Lucia / Zod / Tailwind",
+        },
+      },
+    ],
+    features: [
+      "Auth system w/ HTTP Cookies",
+      "See all your boards, tasks and tags and change their order with simple gestures",
+      "Create as many as tags as you want per board and attribute them to your tasks",
+      "Create tasks with optional end dates, tags, subtasks...",
+    ],
+  },
+  "typing-app": {
+    name: "Typing Speed App",
+    description:
+      "A simple typing speed game helping you measure your WPM (words per minute). If you create an account, you can have access to an history as well as compare yourself to others in the leaderboard.",
+    images: [
+      [
+        {
+          alt: "Typing App Homescreen",
+          src: typing,
+        },
+      ],
+      [
+        {
+          alt: "Typing App Mocha",
+          src: typingMocha,
+        },
+      ],
+      [
+        {
+          alt: "Typing App Themes",
+          src: typingThemes,
+        },
+      ],
+      [
+        {
+          alt: "Typing App Profile",
+          src: typingProfile,
+        },
+      ],
+      [
+        {
+          alt: "Typing App Leaderboard",
+          src: typingLeaderboard,
+        },
+      ],
+    ],
+    bullets: [
+      {
+        label: "website",
+        content: {
+          type: "url",
+          text: "https://typing.antonin.dev/",
+          target: "https://typing.antonin.dev/",
+        },
+      },
+      {
+        label: "source",
+        content: {
+          type: "url",
+          text: "github.com",
+          target: "https://github.com/antoninpire/typing-speed",
+        },
+      },
+      {
+        label: "stack",
+        content: {
+          type: "text",
+          text: "NextJS / React / PostgreSQL",
+        },
+      },
+      {
+        label: "other",
+        content: {
+          type: "text",
+          text: "TRPC / Prisma / Auth.js / Zod / Tailwind / Zustand / Radix",
+        },
+      },
+    ],
+    features: [
+      "Auth system w/ HTTP Cookies",
+      "Choose a duration and a type of shown characters, and start typing to get your WPM stats",
+      "View a leaderboard of all the best recorded WPMs and filter through it",
+      "View your profile games history, as well as various stats regarding your WPM and amount of games",
     ],
   },
 } satisfies TProject;
