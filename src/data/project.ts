@@ -233,8 +233,8 @@ export default {
         label: "website",
         content: {
           type: "url",
-          text: "https://markdown-notes.vercel.app/",
-          target: "https://markdown-notes-psi.vercel.app/",
+          text: "https://markdown.antonin.dev/",
+          target: "https://markdown.antonin.dev/",
         },
       },
       {
