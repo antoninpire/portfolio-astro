@@ -4,6 +4,7 @@ import natflix from "@assets/natflix.png";
 import polls from "@assets/polls.png";
 import sinta from "@assets/sinta.png";
 import typing from "@assets/typing.png";
+import shortener from "@assets/url-shortener-home.png";
 import type { PROJECT_NAMES } from "@data/project";
 
 type TProjects = {
@@ -27,6 +28,13 @@ export default [
       "A simple typing game to measure your WPM (words per minute), made using React & NextJS",
     src: typing,
     slug: "typing-app",
+  },
+  {
+    label: "URL Shortener",
+    description:
+      "A simple url shortener for personal use, made using React & NextJS",
+    src: shortener,
+    slug: "url-shortener",
   },
   {
     label: "Kanban App",

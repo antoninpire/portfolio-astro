@@ -23,6 +23,11 @@ import typingMocha from "@assets/typing-mocha.png";
 import typingProfile from "@assets/typing-profile.png";
 import typingThemes from "@assets/typing-themes.png";
 import typing from "@assets/typing.png";
+import shortenerDashboard from "@assets/url-shortener-dashboard.png";
+import shortenerEdit from "@assets/url-shortener-edit.png";
+import shortener from "@assets/url-shortener-home.png";
+import shortenerLink from "@assets/url-shortener-link.png";
+import shortenerProfile from "@assets/url-shortener-profile.png";
 
 export type PROJECT_NAMES =
   | "sinta"
@@ -30,7 +35,8 @@ export type PROJECT_NAMES =
   | "polls-app"
   | "markdown-editor"
   | "kanban-app"
-  | "typing-app";
+  | "typing-app"
+  | "url-shortener";
 
 type TBullet = {
   label: string;
@@ -196,6 +202,81 @@ export default {
       "Role system w/ Admin Panel",
       "3 Machine Learning implementations, changeable through preferences",
       "Rating system & view system",
+    ],
+  },
+  "url-shortener": {
+    name: "URL Shortener",
+    description:
+      "A simple url shortener I made for my own use. It includes an auth system to keep your links active at all times, whereas link created by public users are only temporary. As an authenticated user, you can view your links through a dashboard, as well as edit / delete them at will.",
+    images: [
+      [
+        {
+          alt: "Home",
+          src: shortener,
+        },
+      ],
+      [
+        {
+          alt: "Create Link",
+          src: shortenerLink,
+        },
+      ],
+      [
+        {
+          alt: "Dashboard",
+          src: shortenerDashboard,
+        },
+      ],
+      [
+        {
+          alt: "Profile",
+          src: shortenerProfile,
+        },
+      ],
+      [
+        {
+          alt: "Edit",
+          src: shortenerEdit,
+        },
+      ],
+    ],
+    bullets: [
+      {
+        label: "website",
+        content: {
+          type: "url",
+          text: "https://s.antonin.dev/",
+          target: "https://s.antonin.dev/",
+        },
+      },
+      {
+        label: "source",
+        content: {
+          type: "url",
+          text: "github.com",
+          target: "https://github.com/antoninpire/url-shortener",
+        },
+      },
+      {
+        label: "stack",
+        content: {
+          type: "text",
+          text: "React / Next / MySQL",
+        },
+      },
+      {
+        label: "other",
+        content: {
+          type: "text",
+          text: "TRPC / Prisma / Clerk / QStash / Zod / Tailwind",
+        },
+      },
+    ],
+    features: [
+      "Auth system w/ HTTP Cookies",
+      "Create unlimited shortened links",
+      "List all your previously created shortened links",
+      "Edit and delete your created shortened links",
     ],
   },
   "markdown-editor": {
