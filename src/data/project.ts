@@ -245,8 +245,8 @@ export default {
         label: "website",
         content: {
           type: "url",
-          text: "https://s.antonin.dev/",
-          target: "https://s.antonin.dev/",
+          text: "https://url-shortener-cyan.vercel.app/",
+          target: "https://url-shortener-cyan.vercel.app/",
         },
       },
       {
